@@ -7,6 +7,9 @@ spec:
           secret:
             # The secret must be created before deploying this application
             secretName: "camel-config"
+        - name: mft-vol
+          persistentVolumeClaim:
+            claimName: nfs-pvc-01
       containers:
         -
           volumeMounts:
@@ -15,6 +18,10 @@ spec:
               # Mount the secret where spring-cloud-kubernetes is configured to read it
               # see src/main/resources/bootstrap.yml
               mountPath: "/etc/secrets/camel-config"
+          volumeMounts:
+            - name: mft-vol
+              mountPath: /mnt/mft
+              readOnly: false
           resources:
            requests:
              cpu: "0.2"

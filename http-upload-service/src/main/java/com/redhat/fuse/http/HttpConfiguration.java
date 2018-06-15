@@ -24,7 +24,14 @@ public class HttpConfiguration {
 
 	private String host;
 	private String port;
+	private String nfsDir;
 	
+	public String getNfsDir() {
+		return nfsDir;
+	}
+	public void setNfsDir(String nfsDir) {
+		this.nfsDir = nfsDir;
+	}
 	public String getHost() {
 		return host;
 	}

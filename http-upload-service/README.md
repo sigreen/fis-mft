@@ -47,3 +47,10 @@ Now that everything is running perfectly in your local environment, let's try de
 ```
 curl --request PUT  --data-binary @/Users/sigreen/Downloads/hourlyObs.xml --header "filename: hourlyObs.xml" http://http-upload-sce-fis-mft.192.168.64.16.nip.io  -v
 ```
+10. Fix minishift PV NFS stuff by executing the following:
+```
+minishift ssh
+sudo su -
+[root@minishift docker]# setsebool -P virt_use_nfs 1
+[root@minishift docker]# setsebool -P virt_sandbox_use_nfs 1
+```

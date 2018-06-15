@@ -17,7 +17,7 @@
             <from id="readHttpStreamAndDumpToFileStarter" uri="jetty:http://{{httpUploadService.host}}:{{httpUploadService.port}}?disableStreamCache=true"/>
             <log id="logStreamClass" message="Handling a stream of class : ${body.class}"/>
             <log id="logHttpHeaders" message="${headers}"/>
-            <to id="writeToFile" uri="file:in?fileName=${header.filename}-${date:now:yyyyMMddHHmmssSSS}.ready"/>
+            <to id="writeToFile" uri="file:{{httpUploadService.nfsDir}}/in?fileName=${header.filename}-${date:now:yyyyMMddHHmmssSSS}.ready"/>
             <setBody id="setResponseBody">
                 <constant>DONE</constant>
             </setBody>

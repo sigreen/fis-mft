@@ -1,7 +1,9 @@
 = Fuse on OpenShift Managed File Transfer (MFT) Proof of Concept (PoC)
 
 == Overview
-This project demonstrates a bunch of different endpoints (HTTPS and SFTP) to stream (or transfer) files into OpenShift and trigger a series of Camel Routes
+This project demonstrates a bunch of different endpoints (HTTPS and SFTP) to stream (or transfer) files into OpenShift and trigger a series of Camel Routes.
+
+image:images/mft-overview.png[MFT, title="MFT Overview"]
 
 == Deployment options
 
