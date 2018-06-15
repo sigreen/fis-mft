@@ -117,5 +117,6 @@
     <description>Managed File Transfer</description>
     <modules>
     	<module>http-upload-service</module>
+    	<module>ftp-download-service</module>
     </modules>
 </project>
