@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "v1",
+  "actions": [
+    {
+      "name": "Read File",
+      "description": "Read File from local disk",
+      "id": "io.syndesis:read-file-from-action",
+      "pattern": "From",
+      "actionType": "connector",
+	  "descriptor": {
+	        "kind": "ENDPOINT",
+	        "entrypoint": "direct:read-file-xml",
+	        "resource": "classpath:META-INF/syndesis/extensions/file-action.xml",
+	        "inputDataShape": {
+	          "kind": "any"
+	        },
+	        "outputDataShape": {
+	          "kind": "any"
+	        },
+             "propertyDefinitionSteps": [
+            {
+                "description": "File Directory",
+                "name": "dir",
+                "properties": {
+                    "dir": {
+                        "componentProperty": false,
+                        "deprecated": false,
+                        "description": "The local file directory",
+                        "displayName": "File Directory",
+                        "javaType": "String",
+                        "kind": "parameter",
+                        "required": false,
+                        "secret": false,
+                        "type": "string",
+                        "tags": [],
+                        "enum": []
+                    }
+                }
+            }
+        ] 
+    }
+    },
+    {
+      "name": "Write File",
+      "description": "Write File to local disk",
+      "id": "io.syndesis:write-file-to-action",
+      "pattern": "To",
+      "actionType": "connector",
+	  "descriptor": {
+	        "kind": "ENDPOINT",
+	        "entrypoint": "direct:write-file-xml",
+	        "resource": "classpath:META-INF/syndesis/extensions/file-action.xml",
+	        "inputDataShape": {
+	          "kind": "any"
+	        },
+	        "outputDataShape": {
+	          "kind": "any"
+	        },
+             "propertyDefinitionSteps": [
+            {
+                "description": "File Directory",
+                "name": "dir",
+                "properties": {
+                    "dir": {
+                        "componentProperty": false,
+                        "deprecated": false,
+                        "description": "The local file directory",
+                        "displayName": "File Directory",
+                        "javaType": "String",
+                        "kind": "parameter",
+                        "required": false,
+                        "secret": false,
+                        "type": "string",
+                        "tags": [],
+                        "enum": []
+                    }
+                }
+            }
+        ] 
+      }
+    }
+  ]
+}

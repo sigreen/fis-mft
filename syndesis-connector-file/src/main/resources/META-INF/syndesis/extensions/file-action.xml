@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes id="routes-8b99e3f8-f708-4aa0-b4f9-bc1a6b7e7fce"
+    xmlns="http://camel.apache.org/schema/spring"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+    <route id="read-file-xml">
+        <from id="_from1" uri="file:${header.dir}"/>
+        <to id="_to1" uri="direct:read-file-xml"/>
+    </route>
+    <route id="write-file-xml">
+        <from id="_from2" uri="direct:write-file-xml"/>
+        <to id="_to2" uri="file:${header.dir}"/>
+    </route>
+</routes>
