@@ -3,30 +3,28 @@
   "actions": [
     {
       "name": "Read File",
-      "description": "Read File from local disk",
+      "description": "Read a file from the local filesystem",
       "id": "io.syndesis:read-file-from-action",
       "pattern": "From",
       "actionType": "connector",
-	  "descriptor": {
-	        "kind": "ENDPOINT",
-	        "entrypoint": "direct:read-file-xml",
-	        "resource": "classpath:META-INF/syndesis/extensions/file-action.xml",
-	        "inputDataShape": {
-	          "kind": "any"
-	        },
-	        "outputDataShape": {
-	          "kind": "any"
-	        },
-             "propertyDefinitionSteps": [
+      "descriptor": {
+        "componentScheme": "file",
+        "inputDataShape": {
+          "kind": "none"
+        },
+        "outputDataShape": {
+          "kind": "none"
+        },
+        "propertyDefinitionSteps": [
             {
-                "description": "File Directory",
-                "name": "dir",
+                "description": "Directory Name",
+                "name": "directoryName",
                 "properties": {
-                    "dir": {
+                    "directoryName": {
                         "componentProperty": false,
                         "deprecated": false,
-                        "description": "The local file directory",
-                        "displayName": "File Directory",
+                        "description": "The file directory name",
+                        "displayName": "Directory Name",
                         "javaType": "String",
                         "kind": "parameter",
                         "required": false,
@@ -37,35 +35,33 @@
                     }
                 }
             }
-        ] 
-    }
+        ]
+      }
     },
     {
       "name": "Write File",
-      "description": "Write File to local disk",
+      "description": "Write a file to the local filesystem",
       "id": "io.syndesis:write-file-to-action",
       "pattern": "To",
       "actionType": "connector",
-	  "descriptor": {
-	        "kind": "ENDPOINT",
-	        "entrypoint": "direct:write-file-xml",
-	        "resource": "classpath:META-INF/syndesis/extensions/file-action.xml",
-	        "inputDataShape": {
-	          "kind": "any"
-	        },
-	        "outputDataShape": {
-	          "kind": "any"
-	        },
-             "propertyDefinitionSteps": [
+      "descriptor": {
+        "componentScheme": "file",
+        "inputDataShape": {
+          "kind": "none"
+        },
+        "outputDataShape": {
+          "kind": "none"
+        },
+        "propertyDefinitionSteps": [
             {
-                "description": "File Directory",
-                "name": "dir",
+                "description": "Directory Name",
+                "name": "directoryName",
                 "properties": {
-                    "dir": {
+                    "directoryName": {
                         "componentProperty": false,
                         "deprecated": false,
-                        "description": "The local file directory",
-                        "displayName": "File Directory",
+                        "description": "The file directory name",
+                        "displayName": "Directory Name",
                         "javaType": "String",
                         "kind": "parameter",
                         "required": false,
@@ -76,7 +72,7 @@
                     }
                 }
             }
-        ] 
+        ]
       }
     }
   ]
