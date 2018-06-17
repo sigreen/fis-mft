@@ -1,6 +1,6 @@
-# Log XML Extension
+# Simple File Extension
 
-This is a simple Syndesis Extension to add a body log message with a prefix.
+This is a simple Syndesis Extension to read or write a file from the local file system.
 
 The extension exposes one configurable field:
 - **prefix** the log message prefix
