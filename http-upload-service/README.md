@@ -47,7 +47,7 @@ Now that everything is running perfectly in your local environment, let's try de
 11. Once deployment and running on OpenShift, test uploading a large file like so:
 
 ```
-curl --request PUT  --data-binary @/Users/sigreen/Downloads/hourlyObs.xml --header "filename: hourlyObs.xml" http://http-upload-sce-fis-mft.192.168.64.16.nip.io  -v
+curl --request PUT  --data-binary @/path/to/file/YOURFILENAME --header "filename: YOURFILENAME" http://YOURROUTEURL  -v
 ```
 12. Fix minishift PV NFS stuff by executing the following.  You need to perform this for every Minishift restart:
 ```
