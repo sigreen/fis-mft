@@ -35,19 +35,21 @@ Build, Deploy and Run on OpenShift
 Now that everything is running perfectly in your local environment, let's try deploying to our SpringBoot container to OpenShift.
 
 1. Login via the CLI using `oc login -u YOURUSERID`.
-2. Go to your project `oc new-project fis-mft`
+2. Go to your project `oc new-project YOURPROJECT`
 3. Via the CLI, cd to your mvn project and execute `oc create -f src/main/fabric8/sa.yml` to create the service account.
 4. Using the same CLI, execute `oc create -f src/main/fabric8/secrets.yml` to create the secret.
 5. Using the same CLI, execute `oc create -f src/main/fabric8/configmap.yaml` to create the configmap.
 6. Using the same CLI, execute `oc secrets add sa/qs-camel-config secret/camel-config` to add the secret to the service account.
-7. Using the same CLI, execute `oc policy add-role-to-user view system:serviceaccount:fis-mft:qs-camel-config` to give the 'view' permission to the service account.
-8. Via the CLI, cd to your mvn project and execute `mvn clean -DskipTests fabric8:deploy -Popenshift`.
-9. Once deployment and running on OpenShift, test uploading a large file like so:
+7. Using the same CLI, execute `oc policy add-role-to-user view system:serviceaccount:YOURPROJECT:qs-camel-config` to give the 'view' permission to the service account.
+8. Create the persistent volume via the CLI, by executing `oc create -f support/nfs-pv-01.yaml`
+9. Create the persistent volume claim via the CLI, by executing `oc create -f support/nfs-pvc-01.yaml`
+10. Via the CLI, cd to your mvn project and execute `mvn clean -DskipTests fabric8:deploy -Popenshift`.
+11. Once deployment and running on OpenShift, test uploading a large file like so:
 
 ```
 curl --request PUT  --data-binary @/Users/sigreen/Downloads/hourlyObs.xml --header "filename: hourlyObs.xml" http://http-upload-sce-fis-mft.192.168.64.16.nip.io  -v
 ```
-10. Fix minishift PV NFS stuff by executing the following:
+12. Fix minishift PV NFS stuff by executing the following.  You need to perform this for every Minishift restart:
 ```
 minishift ssh
 sudo su -

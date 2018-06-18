@@ -22,5 +22,20 @@
                 <constant>DONE</constant>
             </setBody>
         </route>
+        <route id="cbr-files-outbound">
+            <from id="_from1" uri="file:{{httpUploadService.nfsDir}}/in"/>
+            <log id="_log1" message="File size: ${file:length}"/>
+            <choice id="_choice1">
+                <when id="_when1">
+                    <simple>${file:length} &lt; 100000000</simple>
+                    <!-- File smaller than 100MB, so send S3 -->
+                    <to id="writeToFileS3" uri="file:{{httpUploadService.nfsDir}}/out_s3"/>
+                </when>
+                <otherwise id="_otherwise1">
+                    <!-- File larger than 100MB, so send SFTP -->
+                    <to id="writeToFileSFTP" uri="file:{{httpUploadService.nfsDir}}/out_sftp"/>
+                </otherwise>
+            </choice>
+        </route>
     </camelContext>
 </beans>
