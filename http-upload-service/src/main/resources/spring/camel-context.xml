@@ -17,13 +17,13 @@
             <from id="readHttpStreamAndDumpToFileStarter" uri="jetty:http://{{httpUploadService.host}}:{{httpUploadService.port}}?disableStreamCache=true"/>
             <log id="logStreamClass" message="Handling a stream of class : ${body.class}"/>
             <log id="logHttpHeaders" message="${headers}"/>
-            <to id="writeToFile" uri="file:{{httpUploadService.nfsDir}}/in?fileName=${header.filename}-${date:now:yyyyMMddHHmmssSSS}.ready"/>
+            <to id="writeToFile" uri="file:{{httpUploadService.nfsDir}}/in?fileName=${header.filename}-${date:now:yyyyMMddHHmmssSSS}.ready&amp;tempFileName=.inprogress"/>
             <setBody id="setResponseBody">
                 <constant>DONE</constant>
             </setBody>
         </route>
         <route id="cbr-files-outbound">
-            <from id="_from1" uri="file:{{httpUploadService.nfsDir}}/in"/>
+            <from id="_from1" uri="file:{{httpUploadService.nfsDir}}/in?antExclude=*/.inprogress&amp;moveFailed=.error&amp;move=.done"/>
             <log id="_log1" message="File size: ${file:length}"/>
             <choice id="_choice1">
                 <when id="_when1">
